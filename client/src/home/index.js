@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles'
 import { AppBar, Toolbar, Typography, Grid, List, ListItem, ListItemText } from '@material-ui/core'
+import { grey } from '@material-ui/core/colors';
 
 
 import FlightPlan from '../modules/flightplan/index'
@@ -23,11 +24,11 @@ const SimHome = () => {
 
     return (
         <div className={classes.root}>
-            <AppBar position="static">
+            <AppBar position="static" className={classes.appBar}>
                 <Toolbar>
-                <Typography variant="h6" className={classes.title}>
-                    DATA PREPARATION - Intelligent Air Traffic Simulator (iSIM)
-                </Typography>              
+                    <Typography variant="h6" className={classes.title}>
+                        DATA PREPARATION - Intelligent Air Traffic Simulator (iSIM)
+                    </Typography>              
                 </Toolbar>
             </AppBar>
             <Grid container spacing={5}>
@@ -74,6 +75,10 @@ export default SimHome
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
+        color: grey[800]
+    },
+    appBar : {
+        backgroundColor: grey[800],
     },
     title: {
         flexGrow: 1,
