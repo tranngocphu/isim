@@ -10,3 +10,4 @@ class User(Base):
     fullname = Column(String(10))
     nickname = Column(String(10))
     phone = Column(String(20))
+    office = Column(String(20))
