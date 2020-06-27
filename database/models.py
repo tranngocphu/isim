@@ -1,13 +1,7 @@
-import sqlalchemy
-from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String
 
-from database.config import DB_URL
-
-engine = create_engine(DB_URL, echo=True, encoding='utf-8')
 Base = declarative_base()
-
 
 class User(Base):
     __tablename__ = "users"    
@@ -15,5 +9,4 @@ class User(Base):
     name = Column(String(10))
     fullname = Column(String(10))
     nickname = Column(String(10))
-
-Base.metadata.create_all(engine)
+    phone = Column(String(20))
