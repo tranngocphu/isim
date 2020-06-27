@@ -35,19 +35,11 @@ const SimHome = () => {
                 {/* Left Sidebar */}
                 <Grid item xs={4} lg={2}>
                     <div className={classes.sidePanel}>
-                        <List compoent="nav">
-                            <ListItem                            
-                                button
-                                selected={selectedIndex === 0}
-                                onClick={(e) => handleListItemClick(e, 0)}
-                                >
+                        <List component="nav">
+                            <ListItem button selected={selectedIndex === 0} onClick={(e) => handleListItemClick(e, 0)}>
                                 <ListItemText primary="Flight Plan" />
                             </ListItem>
-                            <ListItem                            
-                                button
-                                selected={selectedIndex === 1}
-                                onClick={(e) => handleListItemClick(e, 1)}
-                                >
+                            <ListItem button selected={selectedIndex === 1} onClick={(e) => handleListItemClick(e, 1)}>
                                 <ListItemText primary="Scenario Editor" />
                             </ListItem>
                         </List>                        
