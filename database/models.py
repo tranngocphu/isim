@@ -28,7 +28,7 @@ class ScenarioDB(Base):
 
 class FlightPlanDB(Base):
     __tablename__ = "isim_flightplans"
-    id = Column(INTEGER, primary_key=True)
+    id             = Column(INTEGER, primary_key=True)
     scenario_id    = Column(INTEGER)
     flight_id      = Column(VARCHAR(length=20), default=uniqid)
     callsign       = Column(VARCHAR(length=10), default='')
