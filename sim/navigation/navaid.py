@@ -1,3 +1,7 @@
+''' 
+This file contains abstract classes of NavAid such as Waypoints, Airways, Runways
+'''
+
 import numpy as np
 from pygeodesy.ellipsoidalVincenty import LatLon
 

@@ -130,3 +130,4 @@ dmypy.json
 
 # isim
 .vscode
+bin/bada/*

@@ -14,3 +14,7 @@ STATIC_ROOT   = os.path.join(TEMPLATE_ROOT, "static")
 # SQL Database configuration
 SQLITE_PATH = os.path.join(SERVER_ROOT, "bin", "sqlite", "isim.db")
 DB_URL = "sqlite:///{}".format(SQLITE_PATH)
+
+
+# BADA directory
+BABA_DIR = os.path.join(SERVER_ROOT, "bin", "bada", 'bada36')

@@ -16,8 +16,6 @@ The frontend provides the followings:
 * GUI for real-time air traffic simulation
 * GUI for human-in-the-loop experiments involving Air Traffic Controllers (ATCO)
 
-## 2. Database Structure
-
-## 3. Backend Structure
-
-## 4. Frontend Structure
+## 2. Database
+## 3. Backend
+## 4. Frontend
