@@ -172,6 +172,24 @@ class ACData(object):
     # value from BADA.gpf file
     gr_acc         = 2.0
 
+    # speed schedules increment over altitude (section 5.8 BADA manual), KCAS
+    Vd_cl1  = 5.0
+    Vd_cl2  = 10.0
+    Vd_cl3  = 30.0
+    Vd_cl4  = 60.0
+    Vd_cl5  = 80.0
+    Vd_cl6  = 20.0
+    Vd_cl7  = 30.0
+    Vd_cl8  = 35.0
+    Vd_des1 = 5.0
+    Vd_des2 = 10.0
+    Vd_des3 = 20.0
+    Vd_des4 = 50.0
+    Vd_des5 = 5.0
+    Vd_des6 = 10.0
+    Vd_des7 = 20.0
+
+
     def setOPFData(self, data):
         data = data[1:]  # remove the empty data line on line 12 of OPF files
         # aircraft type block:    1 line

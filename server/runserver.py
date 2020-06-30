@@ -1,4 +1,3 @@
-import webbrowser
 from tornado import web, options, ioloop
 
 from config import STATIC_ROOT, TEMPLATE_ROOT, SERVER_PORT
@@ -24,6 +23,5 @@ if __name__ == "__main__":
     url = "http://127.0.0.1:{}/".format(SERVER_PORT)
     app = make_app()
     app.listen(SERVER_PORT)
-    print("\nThe app is served at {}".format(url))
-    webbrowser.open(url, new=2)
+    print("\nThe app is served at {}".format(url))    
     ioloop.IOLoop.current().start()   

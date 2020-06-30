@@ -3,7 +3,7 @@ from sqlalchemy import Column
 from sqlalchemy.dialects.sqlite import FLOAT, INTEGER, VARCHAR, DATETIME, BOOLEAN, TEXT, TIMESTAMP
 import datetime
 
-from sim.utils.others import uniqid
+from utils.others import uniqid
 
 
 Base = declarative_base()
