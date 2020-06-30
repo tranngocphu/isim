@@ -53,7 +53,7 @@ opf_format = [
 opf_parser = FixedWidthParser(opf_format)
 
 
-# APT FILE PARSER
+# APF FILE PARSER
 apf_format = [
     # 01 empty data line on line 11
     'CD',
@@ -213,7 +213,7 @@ class ACData(object):
         self.vmld = self.Vstall_ld * self.CVmin
 
     def setAPFData(self, data):
-        data = data[1:]  # remove the empty data line on line 11 of OPF files
+        data = data[1:]  # remove the empty data line on line 11 of APF files
         # Minimum, average, and high reference speeds for climb, cruise,
         # and descent. xx1=low mass, xx2=high mass
         self.CAScl1, self.CAScl2, self.Mcl, \
