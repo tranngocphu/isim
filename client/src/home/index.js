@@ -33,7 +33,7 @@ const SimHome = () => {
             </AppBar>
             <Grid container spacing={5}>
                 {/* Left Sidebar */}
-                <Grid item xs={4} lg={2}>
+                <Grid item xs={4} md={3} lg={2}>
                     <div className={classes.sidePanel}>
                         <List component="nav">
                             <ListItem button selected={selectedIndex === 0} onClick={(e) => handleListItemClick(e, 0)}>
@@ -47,7 +47,7 @@ const SimHome = () => {
                 </Grid>
                 
                 {/* Main content */}
-                <Grid item xs={8} lg={10}>
+                <Grid item xs={8} md={9} lg={10}>
                     <div className={classes.moduleContent}>
                         {Modules[selectedIndex]}
                     </div>                    
@@ -66,7 +66,7 @@ export default SimHome
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        flexGrow: 1,
+        // flexGrow: 1,
         color: grey[800]
     },
     appBar : {
@@ -79,6 +79,7 @@ const useStyles = makeStyles((theme) => ({
         paddingRight: 50,
     },
     moduleContent : {
-        padding: 10
+        padding: 10,
+        textAlign: "auto"        
     }
 }))
