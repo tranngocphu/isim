@@ -75,7 +75,7 @@ bada_version = 'Unknown'
 
 
 
-def getCoefficients(actype):
+def get_coefficients(actype):
     ''' Get a set of BADA coefficients for the given aircraft type.
         This function looks for the given aircraft type in the synonym list, and
         when successful, retreives the corresponding coefficient set.

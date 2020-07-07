@@ -2,8 +2,8 @@ import os
 
 # Global configurations
 APP_NAME = 'Intelligent Air Traffic Simulator'
-SI       = 'SI'  # SI unit
-GEO      = 'GEO' # Geographic unit (NM, FEET, KNOTS etc)
+SI       = 'SI'     # SI unit
+NAUTIC   = 'NAUTIC' # Geographic unit (NM, FEET, KNOTS etc)
 
 
 # Web server configuration
