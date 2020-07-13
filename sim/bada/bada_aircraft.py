@@ -9,10 +9,16 @@ class BadaAircraft(BaseAircraft):
     '''
     Bada Aircraft class with coefficients from BADA
     '''
-    def __init__(self, actype='A320', phase=INITIAL, lat=0, lon=0, heading=0, alt=0, tas=0, rocd=0):
+    def __init__(self, actype='A320', init_mass=None, phase=INITIAL, lat=0, lon=0, heading=0, alt=0, tas=0, rocd=0):
         super().__init__(phase, lat, lon, heading, alt, tas, rocd)
         self._bada = get_coefficients(actype)[1]
+        if self._bada.engtype != 'Jet':
+            raise ValueError('Only aircraft with Jet engine is supported at the momement')
+        self._mass = self._bada.m_ref if init_mass is None else init_mass
+        self._phase = None
+        self._configuration = None  # TO CL CR AP LD, for calculation of Vstall        
         self._Vstall = 0.0
+        self._idle_thrust = False
 
     
     ''' Aircraft phase check '''
@@ -27,6 +33,7 @@ class BadaAircraft(BaseAircraft):
         assert phase in POSSIBLE_PHASES
         self._phase = phase
     
+    
     ''' Aircraft stall speed'''
     def get_vstall(self, configuration):
         assert configuration in POSSIBLE_CONFIGURATIONS
@@ -37,23 +44,36 @@ class BadaAircraft(BaseAircraft):
     def compute_thurst(self):
         pass
 
+    
     ''' Aircraft drag'''
     def compute_drag(self):
         pass
 
+    
     ''' Aircraft lift'''
     def compute_lift(self):
         pass
 
-    ''' Aircraft mass'''
-    def compute_mass(self):
-        pass
-
-
-
-
-
     
+    ''' Aircraft mass'''
+    @property
+    def mass(self):
+        return self._mass
+    
+    @property
+    def fuel_flow(self):
+        if self._bada.engtype != 'Jet':            
+            raise ValueError('Only Jet engine fuel flow is available for the moment.')
+        if self._phase == CRUISE:
+            pass
+        elif self._idle_thrust or self._phase == DESCENT:
+            pass
+        else:
+            pass
+    
+    def update_mass(self):
+        pass   
+
 
 
 if __name__ == "__main__":
