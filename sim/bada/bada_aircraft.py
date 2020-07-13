@@ -1,6 +1,7 @@
 from sim.bada.base_aircraft import BaseAircraft
 from sim.bada.bada_coeff import get_coefficients
 from sim.bada.phases import INITIAL, DEP_GND_RUN, TAKE_OFF, INITAL_CLIMB, CLIMB, CRUISE, DESCENT, APPROACH, LANDING, ARR_GND_RUN, POSSIBLE_PHASES
+from sim.bada.phases import TO, IC, CR, AP, LD, POSSIBLE_CONFIGURATIONS, VSTALL_KEYS
 
 
 
@@ -11,7 +12,7 @@ class BadaAircraft(BaseAircraft):
     def __init__(self, actype='A320', phase=INITIAL, lat=0, lon=0, heading=0, alt=0, tas=0, rocd=0):
         super().__init__(phase, lat, lon, heading, alt, tas, rocd)
         self._bada = get_coefficients(actype)[1]
-        self._Vstall = 0
+        self._Vstall = 0.0
 
     
     ''' Aircraft phase check '''
@@ -22,12 +23,15 @@ class BadaAircraft(BaseAircraft):
     def get_phase(self):
         return self._phase
 
-    def set_phase(self, phase)
+    def set_phase(self, phase):
         assert phase in POSSIBLE_PHASES
         self._phase = phase
     
-    
     ''' Aircraft stall speed'''
+    def get_vstall(self, configuration):
+        assert configuration in POSSIBLE_CONFIGURATIONS
+        return getattr(self._bada, VSTALL_KEYS[configuration])
+
 
     ''' Aircraft thrust'''
     def compute_thurst(self):
@@ -56,4 +60,5 @@ if __name__ == "__main__":
     ac = BadaAircraft()    
     print(ac.get_phase())
     print(ac.is_phase(CLIMB))
+    print(ac.get_vstall(AP))
     print(ac)
