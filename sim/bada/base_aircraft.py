@@ -25,13 +25,14 @@ class BaseAircraft(object):
         self._position   = Waypoint(lat=lat, lon=lon)
         self._alt        = alt
         self._heading    = heading
-        self._tas        = tas
+        self._tas        = tas        
         self._rocd       = rocd
         self._thrust     = 0
         self._lift       = 0
         self._drag       = 0
         self._path_angle = 0        
         self._mass       = 0
+        self._d_time = 1  # time step for calculation of 4D trajectory
         self._elapsed_time   = 0
         self._distance_to_go = 0
         self._along_path_position = 0
@@ -45,6 +46,18 @@ class BaseAircraft(object):
         pass
 
 
+    # ####################################################################
+    # Simulation time interval
+    # ####################################################################    
+    @property
+    def delta_time(self):
+        return self._d_time
+    
+    def set_delta_time(self, d_t):
+        self._d_time = d_t
+        return d_t
+
+    
     # ####################################################################
     # Kinematic properties: lat, lon, alt, true air speed, vertical speed
     # ####################################################################    
