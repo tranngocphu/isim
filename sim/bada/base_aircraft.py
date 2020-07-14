@@ -117,23 +117,26 @@ class BaseAircraft(object):
     # Dynamic properties: mass, lift, drag, thrust
     # #############################################
 
-    def get_mass(self):
+    @property
+    def mass(self):
         '''read current mass of the aircraft, in kg'''
         pass
 
-    def set_mass(self): 
+    def update_mass(self): 
         '''update the mass of the aircraft, in kg'''
         pass
 
-    def get_thrust(self):
+    @property
+    def thrust(self):
         '''read current thrust of the aircraft, in N'''
         pass
 
-    def set_thrust(self):
+    def compute_thrust(self):
         '''update thrust of the aircraft, in N'''
         pass
     
-    def get_drag(self):
+    @property
+    def drag(self):
         '''read current drag of the aircraft, in N'''
         pass
 
@@ -141,11 +144,12 @@ class BaseAircraft(object):
         '''update drag of the aircraft, in N'''
         pass
 
-    def get_lift(self):
+    @property
+    def lift(self):
         '''read current lift of the aircraft, in N'''
         pass
 
-    def set_lift(self):
+    def compute_lift(self):
         '''update lift of the aircraft, in N'''
         pass
 
