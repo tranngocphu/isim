@@ -18,4 +18,17 @@ The frontend provides the followings:
 
 ## 2. Database
 ## 3. Backend
+### 1. BADA Aircraft  
+#### Completed  
+- Defined phases: inital, departure ground run, take off, initial climb, climb, cruise, descent, approach, landing, arrival ground run
+- Vstall, fuel flow, mass      
+#### TODO: 
+- Thrust, Drag, Lift computation
+- Vertical speed assignment
+- Main stepping function to move the aircraft
+
+### Flight plan
+#### TODO:
+
+
 ## 4. Frontend

@@ -18,7 +18,7 @@ class BaseAircraft(object):
     def init_state(self, phase, lat, lon, heading, alt, tas, rocd):
         '''
         Initialize state of an aircraft at creation.
-        This initial state describe an aircraft parking at lat, lon, alt, heading.
+        This initial state describes an aircraft parking at lat, lon, alt, heading.
         All forces are zeros at the beginning.
         '''
         self._phase      = phase
