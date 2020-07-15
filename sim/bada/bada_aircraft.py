@@ -2,7 +2,7 @@ import numpy as np
 
 from sim.bada.base_aircraft import BaseAircraft
 from sim.bada.bada_coeff import get_coefficients
-from sim.bada.phases import INITIAL, DEP_GND_RUN, TAKE_OFF, INITAL_CLIMB, CLIMB, CRUISE, DESCENT, APPROACH, LANDING, ARR_GND_RUN, POSSIBLE_PHASES
+from sim.bada.phases import INITIAL, DEP_GND_RUN, TAKE_OFF, INITAL_CLIMB, CLIMB, CRUISE, DESCENT, APPROACH, LANDING, ARR_GND_RUN
 from sim.bada.phases import TO, IC, CR, AP, LD, POSSIBLE_CONFIGURATIONS, VSTALL_KEYS
 from sim.units import MS2KNOTS, M2FT
 
@@ -21,62 +21,71 @@ class BadaAircraft(BaseAircraft):
         self._configuration = None  # TO CL CR AP LD, for calculation of Vstall        
         self._Vstall = None
         self._idle_thrust = False
-
-    
-    ''' Aircraft phase check '''
-    def is_phase(self, phase):
-        assert phase in POSSIBLE_PHASES
-        return phase == self._phase
-
-    def get_phase(self):
-        return self._phase
-
-    def set_phase(self, phase):
-        assert phase in POSSIBLE_PHASES
-        self._phase = phase
     
     
-    ''' Aircraft stall speed'''
+    # ####################################################################
+    # Aircraft type query
+    # ####################################################################      
+    def engine_is_jet(self): return self._bada.engtype == 'Jet'
+    def engine__turboprop(self): return self._bada.engtype == 'Turboprop'
+    def engine_piston(self): return self._bada.engtype == 'Piston'
+
+    
+    # ####################################################################
+    # STALL SPEED
+    # ####################################################################  
     def get_vstall(self, configuration):
         assert configuration in POSSIBLE_CONFIGURATIONS
         return getattr(self._bada, VSTALL_KEYS[configuration]) * np.sqrt(self._mass/self._bada.m_ref)
 
 
-    ''' Aircraft thrust'''
-    @property
-    def thurst(self):
-        return self._thurst    
-    
+    # ####################################################################
+    # THRUST
+    # ####################################################################
     def compute_thurst(self):
-        pass
+        if self.engine_is_jet():
+            if self._phase in [DEP_GND_RUN, TAKE_OFF, INITAL_CLIMB, CLIMB]:
+                pass
+            elif self._phase == CRUISE:
+                pass
+            elif self._phase == DESCENT:
+                pass
+            elif self._phase == APPROACH:
+                pass
+            elif self._phase == LANDING:
+                pass
+            elif self._phase == ARR_GND_RUN:
+                pass
+            else:
+                raise ValueError('Invalid aircraft phase!')
 
-    
-    ''' Aircraft drag'''
-    @property
-    def drag(self):
-        return self._drag
+        else:
+            raise ValueError('Only Jet is supported at the moment.')
 
+   
+    # ####################################################################
+    # DRAG
+    # ####################################################################
     def compute_drag(self):
         pass
 
     
-    ''' Aircraft lift'''
-    @property
-    def lift(self):
-        return self._lift
-
+    # ####################################################################
+    # LIFT
+    # ####################################################################
     def compute_lift(self):
         pass
 
     
-    ''' Aircraft mass'''
+    ''' MASS '''
     @property
     def mass(self):
         return self._mass
 
     def update_mass(self):
         self._mass -= self.fuel_flow
-    
+
+    ''' FUEL '''
     @property
     def fuel_flow(self):
         '''Calculate fuel flow consumed after a time step'''

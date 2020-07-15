@@ -1,6 +1,6 @@
 from config import SI, NAUTIC
 from sim.navigation.navaid import Waypoint
-from sim.bada.phases import INITIAL
+from sim.bada.phases import INITIAL, POSSIBLE_PHASES
 
 
 class BaseAircraft(object):
@@ -45,7 +45,6 @@ class BaseAircraft(object):
         '''get current state of the aircraft, as a list or a dict'''
         pass
 
-
     # ####################################################################
     # Simulation time interval
     # ####################################################################    
@@ -56,6 +55,23 @@ class BaseAircraft(object):
     def set_delta_time(self, d_t):
         self._d_time = d_t
         return d_t
+
+
+    # ####################################################################
+    # Aircraft phase
+    # ####################################################################    
+    ''' Aircraft phase check '''
+    def is_phase(self, phase):
+        assert phase in POSSIBLE_PHASES
+        return phase == self._phase
+
+    @property
+    def phase(self):
+        return self._phase
+
+    def set_phase(self, phase):
+        assert phase in POSSIBLE_PHASES
+        self._phase = phase
 
     
     # ####################################################################
@@ -129,7 +145,7 @@ class BaseAircraft(object):
     @property
     def thrust(self):
         '''read current thrust of the aircraft, in N'''
-        pass
+        return self._thrust
 
     def compute_thrust(self):
         '''update thrust of the aircraft, in N'''
@@ -138,16 +154,16 @@ class BaseAircraft(object):
     @property
     def drag(self):
         '''read current drag of the aircraft, in N'''
-        pass
+        return self._drag
 
-    def set_drag(self):
+    def compute_drag(self):
         '''update drag of the aircraft, in N'''
         pass
 
     @property
     def lift(self):
         '''read current lift of the aircraft, in N'''
-        pass
+        return self._lift
 
     def compute_lift(self):
         '''update lift of the aircraft, in N'''
