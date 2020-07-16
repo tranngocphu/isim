@@ -20,3 +20,6 @@ DB_URL = "sqlite:///{}".format(SQLITE_PATH)
 
 # BADA directory
 BABA_DIR = os.path.join(SERVER_ROOT, "bin", "bada", 'bada36')
+
+# ISA Temperature deviation
+DELTA_TEMP_ISA = 0.0

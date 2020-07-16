@@ -1,6 +1,6 @@
 from config import SI, NAUTIC
 from sim.navigation.navaid import Waypoint
-from sim.bada.phases import INITIAL, POSSIBLE_PHASES
+from sim.bada.phases import INITIAL, DEP_GND_RUN, POSSIBLE_PHASES
 
 
 class BaseAircraft(object):
@@ -9,7 +9,7 @@ class BaseAircraft(object):
     Other aircraft classes (e.g. BadaAircraft) should directly or indirectly sub-classs this class.
     All units are SI by default, except angles and lat, lon are in degrees.
     '''
-    def __init__(self, phase=INITIAL, lat=0, lon=0, heading=0, alt=0, tas=0, rocd=0):
+    def __init__(self, phase=DEP_GND_RUN, lat=0, lon=0, heading=0, alt=0, tas=0, rocd=0):
         self.init_state(phase, lat, lon, heading, alt, tas, rocd)
     
     # #####################
@@ -27,11 +27,15 @@ class BaseAircraft(object):
         self._heading    = heading
         self._tas        = tas        
         self._rocd       = rocd
-        self._thrust     = 0
-        self._lift       = 0
-        self._drag       = 0
-        self._path_angle = 0        
-        self._mass       = 0
+        self._thrust     = 0.0
+        self._lift       = 0.0
+        self._drag       = 0.0
+        self._gamma      = 0.0 # path angle
+        self._phi        = 0.0 # roll
+        self._psi        = 0.0 # yaw angle
+        self._path_angle = 0.0
+        self._bank_angle = 0.0
+        self._mass       = 0.0
         self._d_time = 1  # time step for calculation of 4D trajectory
         self._elapsed_time   = 0
         self._distance_to_go = 0

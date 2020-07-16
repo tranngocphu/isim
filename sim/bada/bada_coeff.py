@@ -212,7 +212,7 @@ class ACData(object):
         # engine thrust block:    3 lines
         self.CTC                                  = data[15]
         self.CTdes_low, self.CTdes_high, \
-            self.Hp_des, self.CTdes_app, \
+            self.h_des, self.CTdes_app, \
             self.CTdes_land                       = data[16]
         self.Vdes_ref, self.Mdes_ref              = data[17]
         # fuel consumption block: 3 lines
