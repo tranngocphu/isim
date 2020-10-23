@@ -80,4 +80,10 @@ class Atmosphere(object):
 
     @classmethod
     def tas_to_cas(cls, tas):
-        pass 
+        pass
+
+
+
+if __name__ == "__main__":
+    ''' Testing atmosphere class '''
+    pass
